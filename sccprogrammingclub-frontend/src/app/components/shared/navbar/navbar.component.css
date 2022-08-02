@@ -16,3 +16,20 @@ a {
   transform: translateY(-50%);
   margin-left: 5vw;
 }
+
+.nav-list {
+    display: inline-block;
+}
+
+.nav-list ul {
+    display: inline-block;
+}
+
+.nav-list ul li {
+    display: inline-block;
+}
+
+.active {
+    color: white;
+}
+
