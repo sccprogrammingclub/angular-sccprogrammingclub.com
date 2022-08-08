@@ -1,17 +1,39 @@
 <nav>
-  <a [routerLink]="['/home']" (click)="hide()">Seattle Central College Programming Club</a>
-  <ul [ngClass]="{'side-ul--show': smallScreen && !collapsed, 'side-ul--hide': smallScreen && collapsed}">
-    <li>
-      <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()">Home</a>
-    </li>
-    <li>
-      <a [routerLink]="['/members']" routerLinkActive="active" (click)="hide()">Members</a>
-    </li>
-    <li>
-      <a [routerLink]="['/socials']" routerLinkActive="active" (click)="hide()">Socials</a>
-    </li>
-    <li>
-      <a [routerLink]="['/contact']" routerLinkActive="active" (click)="hide()">Contact</a>
-    </li>
-  </ul>
+  <div id="title">
+    <a id="sccpc" [routerLink]="['/home']">SCC<br>Programming Club</a>
+  </div>
+  <div *ngIf="screenWidth > 770; else elseBlock" id="top-navbar">
+    <ul>
+      <li>
+        <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/members']" routerLinkActive="active">Members</a>
+      </li>
+      <li>
+        <a [routerLink]="['/socials']" routerLinkActive="active">Socials</a>
+      </li>
+      <li>
+        <a [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+      </li>
+    </ul>
+  </div>
+  <ng-template #elseBlock>
+    <div id="side-navbar">
+      <ul>
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()">Home</a>
+        </li>
+        <li>
+          <a [routerLink]="['/members']" routerLinkActive="active" (click)="hide()">Members</a>
+        </li>
+        <li>
+          <a [routerLink]="['/socials']" routerLinkActive="active" (click)="hide()">Socials</a>
+        </li>
+        <li>
+          <a [routerLink]="['/contact']" routerLinkActive="active" (click)="hide()">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
 </nav>
