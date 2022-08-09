@@ -10,7 +10,8 @@ export class NavbarComponent implements OnInit {
   screenWidth: any;
   collapsed: boolean = true;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.onResize();
