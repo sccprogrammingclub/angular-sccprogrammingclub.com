@@ -42,19 +42,21 @@ nav {
   padding: 8px 14px;
   font-size: 0.8rem;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .active {
   color: rgb(157, 157, 255) !important;
 }
 
+ng-template {
+  width: 80%;
+  position: relative;
+  display: inline-block;
+}
+
 #side-navbar {
-  position: absolute;
-  top: 10vh;
-  right: 0;
-  width: auto;
-  height: auto;
-  background-color: #283b62;
+  display: inline-block;
 }
 
 #side-navbar ul {
@@ -63,12 +65,41 @@ nav {
 
 #side-navbar ul li {
   display: block;
-  margin-bottom: 15px;
-  text-align: center;
+}
+
+#side-navbar ul li a {
+
+}
+
+/* #side-navbar {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+
+#side-navbar mat-icon {
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  display: block;
+}
+
+#side-navbar ul {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  display: block;
+}
+
+#side-navbar ul li {
+  display: block;
 }
 
 #side-navbar ul li a {
   text-decoration: none;
   padding: 8px 14px;
+  font-size: 0.8rem;
   color: #ffffff;
-}
+  cursor: pointer;
+} */
