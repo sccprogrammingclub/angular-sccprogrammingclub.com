@@ -56,19 +56,42 @@ ng-template {
 }
 
 #side-navbar {
+  position: relative;
   display: inline-block;
+  width: 80%;
+  height: auto;
+}
+
+#side-navbar mat-icon {
+  position: absolute;
+  right: 2.5%;
+  bottom: 5%;
+
 }
 
 #side-navbar ul {
   list-style: none;
+  position: absolute;
+  right: 0;
+  top: 10%;
+  background-color: #283b62;
 }
 
 #side-navbar ul li {
   display: block;
+  margin-top: 15px;
+  text-align: center;
+}
+
+#side-navbar ul li:nth-child(4) {
+  margin-bottom: 15px;
 }
 
 #side-navbar ul li a {
-
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px 14px;
 }
 
 /* #side-navbar {

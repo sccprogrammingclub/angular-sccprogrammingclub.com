@@ -20,7 +20,7 @@
   </div>
   <ng-template #elseBlock>
     <div id="side-navbar">
-      <mat-icon>menu</mat-icon>
+      <mat-icon (click)="show">menu</mat-icon>
       <ul>
         <li>
           <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()"
