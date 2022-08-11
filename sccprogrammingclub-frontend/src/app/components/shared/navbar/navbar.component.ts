@@ -8,6 +8,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   screenWidth: any;
+  smallScreen: boolean = true;
   collapsed: boolean = true;
 
   constructor() {
@@ -20,13 +21,23 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:resize', [])
   private onResize() {
     this.screenWidth = window.innerWidth;
-  }
-
-  show() {
-    this.collapsed = false;
+    if (this.screenWidth < 590) {
+      this.smallScreen = true;
+    } else {
+      this.smallScreen = false;
+    }
   }
 
   hide() {
     this.collapsed = true;
+  }
+
+  menu() {
+    if (this.collapsed) {
+      this.collapsed = false;
+    } else {
+      this.collapsed = true;
+    }
+    return this.collapsed;
   }
 }

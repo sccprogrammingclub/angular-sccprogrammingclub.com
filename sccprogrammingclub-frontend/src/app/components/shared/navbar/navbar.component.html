@@ -1,57 +1,22 @@
 <nav>
   <div id="title">
-    <a id="sccpc" [routerLink]="['/home']">SCC<br />Programming Club</a>
+    <a id="sccpc" [routerLink]="['/home']" (click)="hide()">SCC<br />Programming Club</a>
   </div>
-  <div *ngIf="screenWidth > 770; else elseBlock" id="top-navbar">
-    <ul>
+  <div class="nav-list" [ngClass]="{'top-navbar': !smallScreen, 'side-navbar': smallScreen}">
+    <ul [ngClass]="{'collapsed': !menu(), 'expanded': menu()}">
       <li>
-        <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+        <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()">Home</a>
       </li>
       <li>
-        <a [routerLink]="['/members']" routerLinkActive="active">Members</a>
+        <a [routerLink]="['/members']" routerLinkActive="active" (click)="hide()">Members</a>
       </li>
       <li>
-        <a [routerLink]="['/socials']" routerLinkActive="active">Socials</a>
+        <a [routerLink]="['/socials']" routerLinkActive="active" (click)="hide()">Socials</a>
       </li>
       <li>
-        <a [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+        <a [routerLink]="['/contact']" routerLinkActive="active" (click)="hide()">Contact</a>
       </li>
     </ul>
   </div>
-  <ng-template #elseBlock>
-    <div id="side-navbar">
-      <mat-icon (click)="show">menu</mat-icon>
-      <ul>
-        <li>
-          <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            [routerLink]="['/members']"
-            routerLinkActive="active"
-            (click)="hide()"
-            >Members</a
-          >
-        </li>
-        <li>
-          <a
-            [routerLink]="['/socials']"
-            routerLinkActive="active"
-            (click)="hide()"
-            >Socials</a
-          >
-        </li>
-        <li>
-          <a
-            [routerLink]="['/contact']"
-            routerLinkActive="active"
-            (click)="hide()"
-            >Contact</a
-          >
-        </li>
-      </ul>
-    </div>
-  </ng-template>
+  <mat-icon *ngIf="smallScreen" (click)="menu()">menu</mat-icon>
 </nav>

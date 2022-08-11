@@ -2,127 +2,89 @@ nav {
   width: 100%;
   height: 10vh;
   background-color: #283b62;
+  position: relative;
 }
 
 #title {
-  width: 20%;
   display: inline-block;
   text-align: center;
   position: relative;
   top: 50%;
-  transform: translateY(-55%);
+  left: 2.5%;
+  transform: translateY(-50%);
 }
 
-#title a {
-  color: #ffffff;
-  position: relative;
-  font-size: 1rem;
-}
-
-#top-navbar {
-  width: 80%;
-  display: inline-block;
-  position: relative;
-  top: 60%;
-  transform: translateY(-90%);
-}
-
-#top-navbar ul {
+ul {
   list-style: none;
 }
 
-#top-navbar ul li {
-  margin: 0 15px;
-  display: inline-block;
-  text-align: center;
-}
-
-#top-navbar ul li a {
-  text-decoration: none;
-  padding: 8px 14px;
-  font-size: 0.8rem;
+a {
   color: #ffffff;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .active {
-  color: rgb(157, 157, 255) !important;
+  color: aqua;
 }
 
-ng-template {
-  width: 80%;
-  position: relative;
+#title a {
+  font-size: 1rem;
+  padding: 5px 10px;
+}
+
+.nav-list {
   display: inline-block;
-}
-
-#side-navbar {
-  position: relative;
-  display: inline-block;
-  width: 80%;
-  height: auto;
-}
-
-#side-navbar mat-icon {
   position: absolute;
-  right: 2.5%;
-  bottom: 5%;
-
-}
-
-#side-navbar ul {
-  list-style: none;
-  position: absolute;
-  right: 0;
-  top: 10%;
   background-color: #283b62;
 }
 
-#side-navbar ul li {
+.nav-list ul {
+  background-color: #283b62;
+}
+
+.nav-list ul li a {
+  padding: 8px 15px;
+  font-size: 0.8rem;
+}
+
+.top-navbar {
+  display: inline-block;
+  position: absolute;
+  bottom: 6%;
+  margin-left: 5vw;
+}
+
+.top-navbar ul li {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.collapsed {
+  display: none !important;
+}
+
+.expanded {
+  display: inline-block;
+}
+
+.side-navbar {
+  position: absolute;
+  right: 0;
+  top: 10vh;
+}
+
+.side-navbar ul li {
   display: block;
-  margin-top: 15px;
+  margin: 10px 0;
   text-align: center;
 }
 
-#side-navbar ul li:nth-child(4) {
-  margin-bottom: 15px;
-}
-
-#side-navbar ul li a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  padding: 8px 14px;
-}
-
-/* #side-navbar {
-  display: inline-block;
-  width: 100%;
-  position: relative;
-}
-
-#side-navbar mat-icon {
-  color: white;
-  cursor: pointer;
+mat-icon {
   position: absolute;
-  right: 0;
-  display: block;
-}
-
-#side-navbar ul {
-  list-style: none;
-  position: absolute;
-  right: 0;
-  display: block;
-}
-
-#side-navbar ul li {
-  display: block;
-}
-
-#side-navbar ul li a {
-  text-decoration: none;
-  padding: 8px 14px;
-  font-size: 0.8rem;
+  right: 3%;
+  bottom: 20%;
+  cursor: pointer;
+  font-size: 1.8rem;
   color: #ffffff;
-  cursor: pointer;
-} */
+}
