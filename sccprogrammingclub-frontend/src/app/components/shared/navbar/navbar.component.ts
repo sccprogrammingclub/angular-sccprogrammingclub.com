@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
     this.collapsed = true;
   }
 
-  menu() {
+  onClickMenu() {
     if (this.collapsed) {
       this.collapsed = false;
     } else {
