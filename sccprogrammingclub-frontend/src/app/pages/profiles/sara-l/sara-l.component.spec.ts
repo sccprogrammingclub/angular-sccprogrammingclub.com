@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MembersComponent } from './members.component';
+import { SaraLComponent } from './sara-l.component';
 
-describe('MembersComponent', () => {
-  let component: MembersComponent;
-  let fixture: ComponentFixture<MembersComponent>;
+describe('SaraLComponent', () => {
+  let component: SaraLComponent;
+  let fixture: ComponentFixture<SaraLComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MembersComponent ]
+      declarations: [ SaraLComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MembersComponent);
+    fixture = TestBed.createComponent(SaraLComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
