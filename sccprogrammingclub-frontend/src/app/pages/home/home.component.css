@@ -1,4 +1,26 @@
+h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 2vh 0 1vh;
+}
+
 img {
+  width: 80%;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+h2 {
+    font-size: 1.2rem;
+    position: relative;
+    left: 10%;
+    margin-bottom: 2vh;
+}
+
+p {
     width: 80%;
-    height: auto;
+    margin: 0 auto;
+    text-align: justify;
 }

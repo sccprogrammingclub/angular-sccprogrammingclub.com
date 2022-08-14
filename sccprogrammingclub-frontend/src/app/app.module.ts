@@ -30,6 +30,8 @@ import { EvelynHComponent } from './pages/profiles/evelyn-h/evelyn-h.component';
 import { RisaOComponent } from './pages/profiles/risa-o/risa-o.component';
 import { NoaSComponent } from './pages/profiles/noa-s/noa-s.component';
 import { CardComponent } from './components/card/card.component';
+import { CurrentMembersComponent } from './pages/current-members/current-members.component';
+import { PastMembersComponent } from './pages/past-members/past-members.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { CardComponent } from './components/card/card.component';
     EvelynHComponent,
     RisaOComponent,
     NoaSComponent,
-    CardComponent
+    CardComponent,
+    CurrentMembersComponent,
+    PastMembersComponent
   ],
   imports: [
     BrowserModule,
