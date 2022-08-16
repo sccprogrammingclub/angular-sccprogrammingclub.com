@@ -32,6 +32,7 @@ import { NoaSComponent } from './pages/profiles/noa-s/noa-s.component';
 import { CardComponent } from './components/card/card.component';
 import { CurrentMembersComponent } from './pages/current-members/current-members.component';
 import { PastMembersComponent } from './pages/past-members/past-members.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PastMembersComponent } from './pages/past-members/past-members.componen
     NoaSComponent,
     CardComponent,
     CurrentMembersComponent,
-    PastMembersComponent
+    PastMembersComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

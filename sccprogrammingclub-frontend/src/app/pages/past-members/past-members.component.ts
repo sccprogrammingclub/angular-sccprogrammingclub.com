@@ -9,9 +9,9 @@ import { MemberService } from 'src/app/services/member/member.service';
 })
 export class PastMembersComponent implements OnInit {
 
-  pastMembers: Member[] = [];
+  // pastMembers: Member[] = [];
 
-  constructor(private memberService: MemberService) {
+  constructor() {
     // memberService.getPastMembers().subscribe((pastMembers) => {
     //   this.pastMembers = pastMembers;
     // });

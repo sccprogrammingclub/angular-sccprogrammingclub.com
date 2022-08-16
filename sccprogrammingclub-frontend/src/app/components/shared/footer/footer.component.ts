@@ -7,20 +7,9 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  screenHeight: any;
-  bodyHeight: any;
-  bodyTallerThanScreen: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
-    this.onResize();
-  }
-  
-  @HostListener('window:resize', [])
-  private onResize() {
-    this.screenHeight = window.innerHeight;
-    this.bodyHeight = document.querySelector('body')?.offsetHeight;
   }
 
 }

@@ -72,6 +72,7 @@ a {
   position: absolute;
   right: 0;
   top: 10vh;
+  z-index: 1000;
 }
 
 .side-navbar ul li {

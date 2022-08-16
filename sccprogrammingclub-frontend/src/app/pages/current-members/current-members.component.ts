@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Member } from 'src/app/interfaces/member.interface';
-import { MemberService } from 'src/app/services/member/member.service';
 
 @Component({
   selector: 'app-current-members',
@@ -9,9 +7,9 @@ import { MemberService } from 'src/app/services/member/member.service';
 })
 export class CurrentMembersComponent implements OnInit {
 
-  currentMembers: Member[] = [];
+  // currentMembers: Member[] = [];
 
-  constructor(private memberService: MemberService) {
+  constructor() {
     // memberService.getCurrentMembers().subscribe((currentMembers) => {
     //   this.currentMembers = currentMembers;
     // });

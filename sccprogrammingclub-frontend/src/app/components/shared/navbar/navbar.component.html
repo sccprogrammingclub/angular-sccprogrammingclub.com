@@ -2,8 +2,11 @@
   <div id="title">
     <a id="sccpc" [routerLink]="['/home']" (click)="hide()">SCC<br />Programming Club</a>
   </div>
-  <div class="nav-list" [ngClass]="{'top-navbar': !smallScreen, 'side-navbar': smallScreen}">
-    <ul [ngClass]="{'collapsed': smallScreen && !onClickMenu(), 'expanded': smallScreen && onClickMenu()}">
+  <div class="nav-list" [ngClass]="{ 'top-navbar': !smallScreen, 'side-navbar': smallScreen }">
+    <ul [ngClass]="{
+        collapsed: smallScreen && !onClickMenu(),
+        expanded: smallScreen && onClickMenu()
+      }">
       <li>
         <a [routerLink]="['/home']" routerLinkActive="active" (click)="hide()">Home</a>
       </li>
