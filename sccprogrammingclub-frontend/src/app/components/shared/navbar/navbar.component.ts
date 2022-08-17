@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:resize', [])
   private onResize() {
     this.screenWidth = window.innerWidth;
-    if (this.screenWidth < 610) {
+    if (this.screenWidth < 500) {
       this.smallScreen = true;
     } else {
       this.smallScreen = false;

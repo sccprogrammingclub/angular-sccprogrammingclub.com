@@ -1,6 +1,8 @@
-<h4>{{ member?.name }}</h4>
-<img [src]="member?.img" [alt]="member?.name" width="99%" height="70%">
+<h4><strong>{{ member?.name }}</strong> ({{ member?.title }})</h4>
+<img [src]="member?.img" [alt]="member?.name">
 
 <p>{{ member?.desc }}</p>
 
-<a><mat-icon>read_more</mat-icon></a>
+<div id="icon">
+    <a [routerLink]="['/member', member?.username]"><mat-icon>read_more</mat-icon></a>
+</div>

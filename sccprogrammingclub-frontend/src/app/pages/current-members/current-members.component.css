@@ -1,0 +1,26 @@
+h2 {
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+span {
+    text-align: center;
+}
+
+hr {
+    margin-top: 1vh;
+}
+
+#profiles {
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: row wrap;
+}
+
+app-card {
+    width: 48%;
+    min-width: 150px;
+    max-width: 200px;
+    height: auto;
+    margin: 1vh 0;
+}

@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CurrentMembersComponent } from './pages/current-members/current-members.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MemberComponent } from './pages/member/member.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PastMembersComponent } from './pages/past-members/past-members.component';
-import { SocialsComponent } from './pages/socials/socials.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'members', redirectTo: 'current-members' },
   { path: 'current-members', component: CurrentMembersComponent },
   { path: 'past-members', component: PastMembersComponent },
-  { path: 'socials', component: SocialsComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'member/:username', component: MemberComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },
 ];

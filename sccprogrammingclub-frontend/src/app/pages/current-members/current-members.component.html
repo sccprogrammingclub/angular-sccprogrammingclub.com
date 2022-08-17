@@ -1,5 +1,7 @@
-<p>current-members works!</p>
+<h2>Current Members of the Programming Club</h2>
+<span><p>({{ currentYear }})</p></span>
+<hr>
 
-<div class="member-container">
-    <!-- <app-card *ngFor="let member of members" [member]="member"></app-card> -->
+<div id="profiles">
+    <app-card *ngFor="let member of currentMembers" [member]="member"></app-card>
 </div>
