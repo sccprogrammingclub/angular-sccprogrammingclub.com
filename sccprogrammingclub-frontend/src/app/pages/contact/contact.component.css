@@ -1,0 +1,33 @@
+h2 {
+    margin-left: 5%;
+}
+
+hr {
+    margin: 1.2vh 0 1.5vh;
+}
+
+form {
+    width: 70%;
+    height: auto;
+    margin: 1vh 0px 1.2vh 2vw;
+}
+
+form label, input {
+    display: block;
+    margin: 1vh 0 0.8vh;
+}
+
+#name {
+    width: 190px;
+    height: 1.3rem;
+}
+
+#email {
+    width: 280px;
+    height: 1.3rem;
+}
+
+#message {
+    width: 300px;
+    height: 200px;
+}
