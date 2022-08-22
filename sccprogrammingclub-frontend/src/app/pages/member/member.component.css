@@ -1,4 +1,28 @@
+h4 {
+    font-size: 2rem;
+    margin: 2vh 0 1vh;
+    text-align: center;
+}
+
+hr {
+    margin: 1vh auto;
+    max-width: 900px;
+}
+
 img {
-    width: 200px;
+    width: 80%;
     height: auto;
+    max-width: 800px;
+    display: block;
+    margin: 2vh auto;
+
+}
+
+p {
+    margin: 1vh auto;
+    text-align: justify;
+    width: 80%;
+    height: auto;
+    font-size: 1.4rem;
+    line-height: 1.2;
 }

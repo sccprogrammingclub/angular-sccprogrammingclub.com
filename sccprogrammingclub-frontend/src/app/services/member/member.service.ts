@@ -121,8 +121,8 @@ export class MemberService {
     // }
   }
 
-  getMember(username: string) {
-    return this.currentMembers.find(obj => obj.username == "franfonse");
+  getMember(username: any) {
+    return this.currentMembers.find(obj => obj.username == username);
     // if (this.member) {
     //   return of(this.member);
     // } else {
