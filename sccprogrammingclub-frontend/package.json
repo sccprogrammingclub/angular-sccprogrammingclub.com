@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy-s3": "aws s3 --profile franfonse sync ./dist/ s3://sccprogrammingclub.com --region us-west-2"
+    "deploy-s3": "aws s3 --profile franfonse sync ./dist/ s3://sccprogrammingclub.com --region us-west-2",
+    "cach-bust": "aws --profile franfonse cloudfront create-invalidation --distribution-id E3JWSJPU5EOD2A --paths '/*'"
   },
   "private": true,
   "dependencies": {
