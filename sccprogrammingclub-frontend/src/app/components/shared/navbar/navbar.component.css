@@ -26,7 +26,7 @@ a {
 }
 
 .active {
-  color: aqua;
+  color: rgb(135, 184, 249) !important;
 }
 
 #title a {
