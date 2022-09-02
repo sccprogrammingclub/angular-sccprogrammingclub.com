@@ -15,6 +15,10 @@ nav {
   transform: translateY(-50%);
 }
 
+#title a  {
+  line-height: 1.1;
+}
+
 ul {
   list-style: none;
 }
