@@ -5,4 +5,5 @@ export interface Member {
     intro: string;
     bio: string;
     img: string;
+    hasCustomProfile: boolean;
 }
