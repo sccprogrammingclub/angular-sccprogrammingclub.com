@@ -8,6 +8,7 @@ import { Member } from 'src/app/interfaces/member.interface';
 })
 export class MemberService {
 
+  private currentYear?: string;
   private currentMembers: Member[] = [
     {
       "name": "Francisco Fonseca",
