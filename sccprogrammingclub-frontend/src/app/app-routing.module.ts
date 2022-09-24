@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CurrentMembersComponent } from './pages/current-members/current-members.component';
-import { EmilyBComponent } from './pages/custom-member-pages/emily-b/emily-b.component';
-import { EvelynHComponent } from './pages/custom-member-pages/evelyn-h/evelyn-h.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MemberComponent } from './pages/member/member.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
@@ -16,10 +14,7 @@ const routes: Routes = [
   { path: 'current-members', component: CurrentMembersComponent },
   { path: 'past-members', component: PastMembersComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'member/:username', component: MemberComponent, children: [
-    {path: 'evelyn', component: EvelynHComponent},
-    {path: '', component: EmilyBComponent}
-  ] },
+  { path: 'member/:username', component: MemberComponent},
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },
 ];
