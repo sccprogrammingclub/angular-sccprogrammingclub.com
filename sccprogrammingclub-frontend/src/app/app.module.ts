@@ -26,6 +26,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MemberComponent } from './pages/member/member.component';
 import { JayDfComponent } from './pages/custom-member-pages/jay-df/jay-df.component';
 import { SiddharthMComponent } from './pages/custom-member-pages/siddharth-m/siddharth-m.component';
+import { LuisSComponent } from './pages/custom-member-pages/luis-s/luis-s.component';
+import { SaraLComponent } from './pages/custom-member-pages/sara-l/sara-l.component';
+import { FranciscoFComponent } from './pages/custom-member-pages/francisco-f/francisco-f.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { SiddharthMComponent } from './pages/custom-member-pages/siddharth-m/sid
     NotFoundComponent,
     MemberComponent,
     JayDfComponent,
-    SiddharthMComponent
+    SiddharthMComponent,
+    LuisSComponent,
+    SaraLComponent,
+    FranciscoFComponent
   ],
   imports: [
     BrowserModule,
