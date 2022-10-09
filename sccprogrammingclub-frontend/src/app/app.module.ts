@@ -24,6 +24,8 @@ import { CurrentMembersComponent } from './pages/current-members/current-members
 import { PastMembersComponent } from './pages/past-members/past-members.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MemberComponent } from './pages/member/member.component';
+import { JayDfComponent } from './pages/custom-member-pages/jay-df/jay-df.component';
+import { SiddharthMComponent } from './pages/custom-member-pages/siddharth-m/siddharth-m.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { MemberComponent } from './pages/member/member.component';
     CurrentMembersComponent,
     PastMembersComponent,
     NotFoundComponent,
-    MemberComponent
+    MemberComponent,
+    JayDfComponent,
+    SiddharthMComponent
   ],
   imports: [
     BrowserModule,
