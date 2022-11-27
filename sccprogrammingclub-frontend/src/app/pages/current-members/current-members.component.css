@@ -19,8 +19,9 @@ hr {
 
 app-card {
     width: 48%;
-    min-width: 150px;
-    max-width: 200px;
+    min-width: 170px;
+    max-width: 20vw;
+    max-height: 30vh;
     height: auto;
     margin: 1.5vh 0.8vw;
     background-color: #f2e4cd;
