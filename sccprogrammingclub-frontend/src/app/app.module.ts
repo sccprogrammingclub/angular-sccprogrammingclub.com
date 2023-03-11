@@ -32,6 +32,7 @@ import { FranciscoFComponent } from './pages/custom-member-pages/francisco-f/fra
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ExampleProjectComponent } from './pages/project/example-project/example-project.component';
 import { ProjectComponent } from './pages/project/project.component';
+import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { ProjectComponent } from './pages/project/project.component';
     FranciscoFComponent,
     ProjectsComponent,
     ExampleProjectComponent,
-    ProjectComponent
+    ProjectComponent,
+    PowdertoyCloneComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ExampleProjectComponent } from './pages/project/example-project/example-project.component';
+import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
 import { CurrentMembersComponent } from './pages/current-members/current-members.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MemberComponent } from './pages/member/member.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'project', component: ProjectComponent, children: [
     { path: 'example-project', component: ExampleProjectComponent },
+    { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
   ]},
   { path: 'member/:username', component: MemberComponent},
   { path: 'not-found', component: NotFoundComponent },
