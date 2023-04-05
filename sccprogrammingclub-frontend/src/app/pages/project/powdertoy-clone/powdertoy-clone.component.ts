@@ -3,6 +3,9 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '
 const FRAMERATE = 60;
 const FRAMETIME = 1 / FRAMERATE;
 
+const PARTICLE_SIZE = 3;
+const GRAVITY = 40;
+
 class Vector2 {
   x: number;
   y: number;
@@ -117,12 +120,24 @@ class Particle {
   }
 
   update(dt: number, bounds: Bounds): void {
-    this.vel.addMut(new Vector2(0, 4 * dt));
+    this.vel.addMut(new Vector2(0, GRAVITY * dt));
     this.pos.addMut(this.vel.scale(dt));
 
     if (this.pos.y > bounds.bottomright.y) {
       this.pos.y = bounds.bottomright.y;
       this.vel.y = 0;
+    }
+    if (this.pos.x > bounds.bottomright.x) {
+      this.pos.x = bounds.bottomright.x;
+      this.vel.x = 0;
+    }
+    if (this.pos.y < bounds.topleft.y) {
+      this.pos.y = bounds.topleft.y;
+      this.vel.y = 0;
+    }
+    if (this.pos.x < bounds.topleft.x) {
+      this.pos.x = bounds.topleft.x;
+      this.vel.x = 0;
     }
   }
 }
@@ -165,12 +180,12 @@ class ParticleMap {
 
       this.doInteractions(this.keyToChunk(chunkKey), particle, (p1, p2) => {
         let distanceSqr = p1.pos.distanceSqr(p2.pos);
-        if (distanceSqr > 1) return;
+        if (distanceSqr > PARTICLE_SIZE * PARTICLE_SIZE) return;
 
         let dPos = p1.pos.sub(p2.pos);
 
         p1.pos.addMut(dPos.scale(0.5));
-        p1.vel.subMut(dPos.scale(p1.vel.dot(dPos)));
+        p1.vel.subMut(dPos.scale(p1.vel.dot(dPos.scale(0.5 / PARTICLE_SIZE))));
       });
     }
 
@@ -268,7 +283,7 @@ export class PowdertoyCloneComponent implements AfterViewInit {
 
     this.particleMap = new ParticleMap(
       4,
-      new Bounds(0, 0, this.canvasCtx.canvas!.width, this.canvasCtx.canvas!.height - 100),
+      new Bounds(0, 0, this.canvasCtx.canvas!.width - PARTICLE_SIZE, this.canvasCtx.canvas!.height - PARTICLE_SIZE),
     );
 
     setInterval(this.gameloop, FRAMETIME * 1000);
@@ -296,7 +311,7 @@ export class PowdertoyCloneComponent implements AfterViewInit {
     this.canvasCtx.clearRect(0, 0, this.canvasCtx.canvas!.width, this.canvasCtx.canvas!.height);
 
     this.particleMap.forAllParticles((particle) => {
-      this.canvasCtx.fillRect(particle.pos.x, particle.pos.y, 1, 1);
+      this.canvasCtx.fillRect(particle.pos.x, particle.pos.y, PARTICLE_SIZE, PARTICLE_SIZE);
     });
   }
 }
