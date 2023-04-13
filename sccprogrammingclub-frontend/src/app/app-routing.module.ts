@@ -20,12 +20,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'project', component: ProjectComponent, children: [
-<<<<<<< Updated upstream
     { path: 'example-project', component: ExampleProjectComponent },
     { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
-=======
-    { path: 'example-project', component: ExampleProjectComponent }
->>>>>>> Stashed changes
   ]},
   { path: 'member/:username', component: MemberComponent},
   { path: 'not-found', component: NotFoundComponent },
