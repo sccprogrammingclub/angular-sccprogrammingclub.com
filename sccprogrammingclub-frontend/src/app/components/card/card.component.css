@@ -1,34 +1,35 @@
 h4 {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    margin: 2% 0;
+    margin: 8px 0;
 }
 
 img {
     display: block;
     width: 95%;
+    max-width: 190px;
     height: auto;
     margin: 4px auto;
 }
 
 p {
     text-align: start;
-    margin: 0 2%;
+    margin: 5px 6%;
 }
 
 #icon {
     display: grid;
     grid-template: 100% / 80% 20%;
-    margin-top: 4px;
+    margin: 4px 0 6px;
 }
 
 a {
     text-decoration: none;
     grid-column: 2;
-    max-width: 2rem;
+    margin: auto;
 }
 
 #icon a mat-icon {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
 }

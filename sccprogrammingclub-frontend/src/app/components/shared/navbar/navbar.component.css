@@ -1,6 +1,6 @@
 nav {
   width: 100%;
-  height: 10vh;
+  height: 90px;
   min-height: 50px;
   background-color: #283b62;
   position: relative;
@@ -29,6 +29,11 @@ a {
   cursor: pointer;
 }
 
+ul li a:hover {
+  color: rgb(135, 184, 249);
+  transition: 0.4s;
+}
+
 .active {
   color: rgb(135, 184, 249) !important;
 }
@@ -51,6 +56,8 @@ a {
 .nav-list ul li a {
   padding: 8px 15px;
   font-size: 0.8rem;
+  position: relative;
+  bottom: 5px;
 }
 
 .top-navbar {
