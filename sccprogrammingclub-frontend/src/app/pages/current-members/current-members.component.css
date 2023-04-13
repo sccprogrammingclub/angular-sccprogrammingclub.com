@@ -1,6 +1,7 @@
 h2 {
     font-size: 1.4rem;
     text-align: center;
+    margin: 25px 0 5px;
 }
 
 span {
@@ -9,6 +10,7 @@ span {
 
 hr {
     margin-top: 1vh;
+    margin-bottom: 15px;
 }
 
 #profiles {
@@ -19,10 +21,9 @@ hr {
 
 app-card {
     width: 48%;
-    min-width: 170px;
-    max-width: 20vw;
-    max-height: 30vh;
+    max-width: 250px;
     height: auto;
+    max-height: 360px;
     margin: 1.5vh 0.8vw;
     background-color: #f2e4cd;
     box-shadow: rgb(31, 32, 33) 0px 20px 30px -10px;
