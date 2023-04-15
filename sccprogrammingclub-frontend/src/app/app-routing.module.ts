@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MemberComponent } from './pages/member/member.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PastMembersComponent } from './pages/past-members/past-members.component';
+import { SnakeProjectComponent } from './pages/project/snake-project/snake-project.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -19,17 +20,22 @@ const routes: Routes = [
   { path: 'past-members', component: PastMembersComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'project', component: ProjectComponent, children: [
-    { path: 'example-project', component: ExampleProjectComponent },
-    { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
-  ]},
-  { path: 'member/:username', component: MemberComponent},
+  {
+    path: 'project',
+    component: ProjectComponent,
+    children: [
+      { path: 'example-project', component: ExampleProjectComponent },
+      { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
+      { path: 'snake-project', component: SnakeProjectComponent },
+    ],
+  },
+  { path: 'member/:username', component: MemberComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'not-found' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

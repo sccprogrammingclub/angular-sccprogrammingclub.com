@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: #222;
+
+  padding: 4rem;
+  gap: 4rem;
+}
+
+.field {
+  background-color: #2e2e2e;
+  padding: 5px;
+  border-radius: 5px;
+  flex-grow: 1;
+  aspect-ratio: 1;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  width: 20rem;
+  background-color: #222;
+  padding: 2rem;
+  color: white;
+  border-radius: 5px;
+}
+
+.info .info-score {
+  margin-bottom: 2rem;
+}
+
+.info .info-score #score {
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.info .info-apples div {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.info .info-apples #apples {
+  font-size: xx-large;
+}
+
+.info .info-apples img {
+  width: 1.5rem;
+}
+
+.leaderboard {
+  width: 20rem;
+  background-color: #222;
+  color: white;
+  border-radius: 5px;
+}
+
+.leaderboard p {
+  font-size: xx-large;
+  padding: 2rem;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0.75rem;
+  border-bottom: 2px solid #393939;
+  margin-bottom: 5px;
+}
+
+.leaderboard-entry .entry-standing {
+  display: flex;
+  gap: 1rem;
+}
+
+.leaderboard-entry .entry-stats {
+  display: flex;
+  gap: 1rem;
+}
+.leaderboard-entry .entry-apples {
+  display: flex;
+}
+.leaderboard-entry .entry-apples img {
+  width: 1rem;
+  height: 1rem;
+}
