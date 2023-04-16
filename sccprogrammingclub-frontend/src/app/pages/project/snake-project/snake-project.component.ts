@@ -691,6 +691,12 @@ module Leaderboard {
       );
     }
 
+    public getPlace(username: string): number {
+      return (
+        this.leaderboard.findIndex((entry) => entry.username == username) + 1
+      );
+    }
+
     public findNeighbours(
       entry: LeaderboardEntry,
       n: number
@@ -790,11 +796,26 @@ module UI {
     }
   }
 
+  //baka
   export class LeaderboardUI {
-    leaderboard: Leaderboard.Leaderboard;
+    private leaderboard: Leaderboard.Leaderboard;
 
     constructor(leaderboard: Leaderboard.Leaderboard) {
       this.leaderboard = leaderboard;
+    }
+
+    public updateLeaderboard(leaderboard: Leaderboard.Leaderboard) {
+      this.leaderboard = leaderboard;
+    }
+
+    public uiGetGameOverEntries(
+      username: string,
+      score: SnakeGame.Score
+    ): Leaderboard.LeaderboardEntry[] {
+      return this.leaderboard.findNeighbours(
+        Leaderboard.LeaderboardEntry.fromScore(username, score),
+        3
+      );
     }
   }
 }
@@ -816,15 +837,17 @@ export class SnakeProjectComponent implements AfterViewInit {
 
   game: SnakeGame.Game;
   leaderboard: Leaderboard.Leaderboard;
-  ui!: UI.FieldUI;
+  fieldUI!: UI.FieldUI;
+  leaderboardUI!: UI.LeaderboardUI;
 
   constructor() {
     this.game = new SnakeGame.Game();
     this.leaderboard = new Leaderboard.Leaderboard();
+    this.leaderboardUI = new UI.LeaderboardUI(this.leaderboard);
   }
 
   ngAfterViewInit(): void {
-    this.ui = new UI.FieldUI(
+    this.fieldUI = new UI.FieldUI(
       this.fieldOverlay,
       this.gameOverScreen,
       this.gameStartScreen,
@@ -833,17 +856,18 @@ export class SnakeProjectComponent implements AfterViewInit {
     );
 
     this.leaderboard.localLoad();
+    this.leaderboardUI.updateLeaderboard(this.leaderboard);
 
     this.game.Init(this.canvasRef);
 
-    this.ui.onStartClicked = () => {
-      this.ui.hideGameStart();
+    this.fieldUI.onStartClicked = () => {
+      this.fieldUI.hideGameStart();
       this.game.startGame();
     };
 
-    this.ui.onRestartClicked = () => {
+    this.fieldUI.onRestartClicked = () => {
       this.game.resetGame();
-      this.ui.showGameStart();
+      this.fieldUI.showGameStart();
     };
 
     this.game.onGameOver = (score) => {
@@ -851,11 +875,11 @@ export class SnakeProjectComponent implements AfterViewInit {
 
       this.leaderboard.addEntry(entry);
       this.leaderboard.localSave();
+      this.leaderboardUI.updateLeaderboard(this.leaderboard);
 
-      this.ui.showGameOver(entry);
+      this.fieldUI.showGameOver(entry);
     };
 
-    this.ui.showGameStart();
-    // this.game.startGame();
+    this.fieldUI.showGameStart();
   }
 }

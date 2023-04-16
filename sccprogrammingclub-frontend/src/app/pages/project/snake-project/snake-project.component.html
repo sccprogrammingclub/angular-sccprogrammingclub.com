@@ -22,54 +22,29 @@
         <div class="field-overlay" #field_overlay>
             <div class="gameover" #gameover>
                 <p class="gameover-title">Game Over!</p>
-                <div class="gameover-leaderboard">
+                <div class="gameover-leaderboard"
+                    *ngFor="let entry of leaderboardUI.uiGetGameOverEntries('Cod3d', game.score); let i=index"
+                    [attr.data-index]="i">
                     <div class="gameover-leaderboard-entry">
                         <div class="entry-standing">
-                            <span>1</span>
-                            <span class="entry-username">Cod3d</span>
+                            <span>{{i + leaderboard.getPlace("Cod3d") - 1}}</span>
+                            <span class="entry-username">{{entry.username}}</span>
                         </div>
                         <div class="entry-stats">
                             <div class="entry-apples">
                                 <img
                                     src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                                <div>5</div>
+                                <div>{{entry.apples}}</div>
                             </div>
-                            <span>1200</span>
-                        </div>
-                    </div>
-                    <div class="gameover-leaderboard-entry leaderboard-entry-me">
-                        <div class="entry-standing">
-                            <span>1</span>
-                            <span class="entry-username">Cod3d</span>
-                        </div>
-                        <div class="entry-stats">
-                            <div class="entry-apples">
-                                <img
-                                    src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                                <div>5</div>
-                            </div>
-                            <span>1200</span>
-                        </div>
-                    </div>
-                    <div class="gameover-leaderboard-entry">
-                        <div class="entry-standing">
-                            <span>1</span>
-                            <span class="entry-username">Cod3d</span>
-                        </div>
-                        <div class="entry-stats">
-                            <div class="entry-apples">
-                                <img
-                                    src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                                <div>5</div>
-                            </div>
-                            <span>1200</span>
+                            <span>{{entry.points}}</span>
                         </div>
                     </div>
                 </div>
-                <button class="restart" #gameover_restart (click)="ui.onRestartClicked()">I wanna go again!</button>
+                <button class="restart" #gameover_restart (click)="fieldUI.onRestartClicked()">I wanna go
+                    again!</button>
             </div>
             <div class="gamestart" #gamestart>
-                <button class="start" #gamestart_start (click)="ui.onStartClicked()">
+                <button class="start" #gamestart_start (click)="fieldUI.onStartClicked()">
                     <p>Snakey</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path
