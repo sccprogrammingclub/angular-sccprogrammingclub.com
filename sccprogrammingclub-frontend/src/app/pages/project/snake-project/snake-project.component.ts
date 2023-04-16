@@ -580,6 +580,7 @@ module SnakeGame {
     public eatApple(): void {
       this._apples += 1;
       this._points += Math.round((1 / this.elapsedSeconds) * 60 * this.apples);
+      this.elapsedSeconds = 0;
     }
   }
 }
