@@ -372,7 +372,9 @@ module SnakeGame {
     }
 
     public addApple(): Vector2 {
-      const pos = this.bounds.randomPoint();
+      let pos = this.bounds.randomPoint();
+      while (this.snake.tail.includes(pos) || this.snake.head == pos)
+        pos = this.bounds.randomPoint();
       this.apples.push(pos);
       return pos;
     }
@@ -764,7 +766,7 @@ module UI {
       ref.nativeElement.style.display = 'none';
     }
 
-    public showGameOver(score: Leaderboard.LeaderboardEntry): void {
+    public showGameOver(): void {
       this._state = 'OVER';
       this.showFieldOverlay();
       this.showElement(this.gameover);
@@ -837,6 +839,7 @@ export class SnakeProjectComponent implements AfterViewInit {
 
   game: SnakeGame.Game;
   leaderboard: Leaderboard.Leaderboard;
+
   fieldUI!: UI.FieldUI;
   leaderboardUI!: UI.LeaderboardUI;
 
@@ -877,7 +880,7 @@ export class SnakeProjectComponent implements AfterViewInit {
       this.leaderboard.localSave();
       this.leaderboardUI.updateLeaderboard(this.leaderboard);
 
-      this.fieldUI.showGameOver(entry);
+      this.fieldUI.showGameOver();
     };
 
     this.fieldUI.showGameStart();
