@@ -55,51 +55,64 @@
         </div>
     </div>
     <div class="field">
-        <div class="gameover">
-            <p>Game Over!</p>
-            <div class="over-leaderboard">
-                <div class="over-leaderboard-entry">
-                    <div class="entry-standing">
-                        <span>1</span>
-                        <span class="entry-username">Cod3d</span>
-                    </div>
-                    <div class="entry-stats">
-                        <div class="entry-apples">
-                            <img
-                                src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                            <div>5</div>
+        <div class="field-overlay" #field_overlay>
+            <div class="gameover" #gameover>
+                <p class="gameover-title">Game Over!</p>
+                <div class="gameover-leaderboard">
+                    <div class="gameover-leaderboard-entry">
+                        <div class="entry-standing">
+                            <span>1</span>
+                            <span class="entry-username">Cod3d</span>
                         </div>
-                        <span>1200</span>
+                        <div class="entry-stats">
+                            <div class="entry-apples">
+                                <img
+                                    src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
+                                <div>5</div>
+                            </div>
+                            <span>1200</span>
+                        </div>
+                    </div>
+                    <div class="gameover-leaderboard-entry leaderboard-entry-me">
+                        <div class="entry-standing">
+                            <span>1</span>
+                            <span class="entry-username">Cod3d</span>
+                        </div>
+                        <div class="entry-stats">
+                            <div class="entry-apples">
+                                <img
+                                    src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
+                                <div>5</div>
+                            </div>
+                            <span>1200</span>
+                        </div>
+                    </div>
+                    <div class="gameover-leaderboard-entry">
+                        <div class="entry-standing">
+                            <span>1</span>
+                            <span class="entry-username">Cod3d</span>
+                        </div>
+                        <div class="entry-stats">
+                            <div class="entry-apples">
+                                <img
+                                    src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
+                                <div>5</div>
+                            </div>
+                            <span>1200</span>
+                        </div>
                     </div>
                 </div>
-                <div class="over-leaderboard-entry">
-                    <div class="entry-standing">
-                        <span>1</span>
-                        <span class="entry-username">Cod3d</span>
-                    </div>
-                    <div class="entry-stats">
-                        <div class="entry-apples">
-                            <img
-                                src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                            <div>5</div>
-                        </div>
-                        <span>1200</span>
-                    </div>
-                </div>
-                <div class="over-leaderboard-entry">
-                    <div class="entry-standing">
-                        <span>1</span>
-                        <span class="entry-username">Cod3d</span>
-                    </div>
-                    <div class="entry-stats">
-                        <div class="entry-apples">
-                            <img
-                                src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                            <div>5</div>
-                        </div>
-                        <span>1200</span>
-                    </div>
-                </div>
+                <button class="restart" #gameover_restart (click)="ui.onRestartClicked()">I wanna go again!</button>
+            </div>
+            <div class="gamestart" #gamestart>
+                <button class="start" #gamestart_start (click)="ui.onStartClicked()">
+                    <p>Snakey</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM10.6219 8.41459C10.5562 8.37078 10.479 8.34741 10.4 8.34741C10.1791 8.34741 10 8.52649 10 8.74741V15.2526C10 15.3316 10.0234 15.4088 10.0672 15.4745C10.1897 15.6583 10.4381 15.708 10.6219 15.5854L15.5008 12.3328C15.5447 12.3035 15.5824 12.2658 15.6117 12.2219C15.7343 12.0381 15.6846 11.7897 15.5008 11.6672L10.6219 8.41459Z">
+                        </path>
+                    </svg>
+                </button>
             </div>
         </div>
         <canvas class="canvas" #canvas width="1000" height="1000"></canvas>
@@ -107,12 +120,12 @@
     <div class="info">
         <div class="info-score">
             <p>Score</p>
-            <p #score id="score">200</p>
+            <p #score id="score">{{game.score.points}}</p>
         </div>
         <div class="info-apples">
             <p>Apples</p>
             <div>
-                <span #apples id="apples">5</span>
+                <span #apples id="apples">{{game.score.apples}}</span>
                 <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
             </div>
         </div>

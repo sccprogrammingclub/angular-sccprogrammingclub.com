@@ -14,6 +14,7 @@
   border-radius: 5px;
   flex-grow: 1;
   aspect-ratio: 1;
+  position: relative;
 }
 
 .canvas {
@@ -61,12 +62,63 @@
   border-radius: 5px;
 }
 
-.leaderboard p {
+.field-overlay {
+  position: absolute;
+  background-color: #2222227d;
+  inset: 0;
+  display: none;
+}
+
+.gameover {
+  width: 15rem;
+  color: white;
+  background-color: #222;
+  border-radius: 10px;
+  border: 4px solid #333;
+  margin: auto;
+
+  display: none;
+}
+
+.gamestart {
+  width: 15rem;
+  color: white;
+  margin: auto;
+  display: none;
+}
+
+.gamestart .start {
+  color: white;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.gamestart .start p {
+  font-size: xx-large;
+}
+
+.gameover .restart {
+  background: none;
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.leaderboard p,
+.gameover .gameover-title {
   font-size: xx-large;
   padding: 2rem;
 }
 
-.leaderboard-entry {
+.leaderboard-entry,
+.gameover-leaderboard-entry {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,19 +129,23 @@
   margin-bottom: 5px;
 }
 
-.leaderboard-entry .entry-standing {
+.leaderboard-entry .entry-standing,
+.gameover-leaderboard-entry .entry-standing {
   display: flex;
   gap: 1rem;
 }
 
-.leaderboard-entry .entry-stats {
+.leaderboard-entry .entry-stats,
+.gameover-leaderboard-entry .entry-stats {
   display: flex;
   gap: 1rem;
 }
-.leaderboard-entry .entry-apples {
+.leaderboard-entry .entry-apples,
+.gameover-leaderboard-entry .entry-apples {
   display: flex;
 }
-.leaderboard-entry .entry-apples img {
+.leaderboard-entry .entry-apples img,
+.gameover-leaderboard-entry .entry-apples img {
   width: 1rem;
   height: 1rem;
 }
