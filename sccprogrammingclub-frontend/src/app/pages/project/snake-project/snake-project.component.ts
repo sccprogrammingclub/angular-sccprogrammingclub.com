@@ -1,3 +1,8 @@
+// I did not want to pollute the NgModule with several components for one game,
+// so good luck to anyone who tries to make sense of this mess
+
+// I hate angular
+
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 module Utils {
@@ -644,6 +649,10 @@ module Leaderboard {
 
     constructor() {
       this.leaderboard = [];
+    }
+
+    public get(n: number, start: number = 0) {
+      return this.leaderboard.slice(start, start + n);
     }
 
     public localLoad(): void {

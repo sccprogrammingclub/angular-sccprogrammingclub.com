@@ -1,56 +1,20 @@
 <div class="container">
     <div class="leaderboard">
         <p>Leaderboard</p>
-        <div class="leaderboard-entry">
-            <div class="entry-standing">
-                <span>1</span>
-                <span class="entry-username">Cod3d</span>
-            </div>
-            <div class="entry-stats">
-                <div class="entry-apples">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                    <div>5</div>
+        <div *ngFor="let entry of leaderboard.get(5); let i = index" [attr.data-index]="i">
+            <div class="leaderboard-entry">
+                <div class="entry-standing">
+                    <span>{{i + 1}}</span>
+                    <span class="entry-username">{{entry.username}}</span>
                 </div>
-                <span>1200</span>
-            </div>
-        </div>
-        <div class="leaderboard-entry">
-            <div class="entry-standing">
-                <span>1</span>
-                <span class="entry-username">Cod3d</span>
-            </div>
-            <div class="entry-stats">
-                <div class="entry-apples">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                    <div>5</div>
+                <div class="entry-stats">
+                    <div class="entry-apples">
+                        <img
+                            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
+                        <div>{{entry.apples}}</div>
+                    </div>
+                    <span>{{entry.points}}</span>
                 </div>
-                <span>1200</span>
-            </div>
-        </div>
-        <div class="leaderboard-entry">
-            <div class="entry-standing">
-                <span>1</span>
-                <span class="entry-username">Cod3d</span>
-            </div>
-            <div class="entry-stats">
-                <div class="entry-apples">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                    <div>5</div>
-                </div>
-                <span>1200</span>
-            </div>
-        </div>
-        <div class="leaderboard-entry">
-            <div class="entry-standing">
-                <span>1</span>
-                <span class="entry-username">Cod3d</span>
-            </div>
-            <div class="entry-stats">
-                <div class="entry-apples">
-                    <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
-                    <div>5</div>
-                </div>
-                <span>1200</span>
             </div>
         </div>
     </div>
