@@ -53,9 +53,6 @@ module SnakeGame {
       );
 
       this.inputHandler = new InputHandler();
-      document.addEventListener('keydown', (event) =>
-        this.inputHandler.onKeyDown(event.key)
-      );
 
       this.initialized = true;
 
@@ -73,6 +70,7 @@ module SnakeGame {
     public startGame(): void {
       if (!this.initialized) throw new Error('Call Init()');
 
+      this.inputHandler.startRecording();
       this.setState('PLAYING');
       this.gameIntervalId = setInterval(
         this.gameloop,
@@ -107,6 +105,7 @@ module SnakeGame {
       if (!this.initialized) throw new Error('Call Init()');
       if (this.getState() != 'PLAYING') throw new Error('No ongoing game');
 
+      this.inputHandler.stopRecording();
       clearInterval(this.gameIntervalId);
       this.setState('OVER');
 
@@ -530,9 +529,24 @@ module SnakeGame {
       { dir: 'RIGHT', keys: ['d', 'ArrowRight'] },
       { dir: 'DOWN', keys: ['s', 'ArrowDown'] },
     ];
+    private _recording: boolean = false;
 
     constructor() {
       this.buffer = [];
+    }
+
+    public get isRecording() {
+      return this._recording;
+    }
+
+    public startRecording(): void {
+      document.addEventListener('keydown', this.onKeyDownHandler);
+      this._recording = true;
+    }
+
+    public stopRecording() {
+      document.removeEventListener('keydown', this.onKeyDownHandler);
+      this._recording = false;
     }
 
     public addDirection(direction: DIRECTION): void {
@@ -543,7 +557,10 @@ module SnakeGame {
       return this.buffer.pop();
     }
 
-    public onKeyDown(key: string): void {
+    private onKeyDownHandler = (event: KeyboardEvent) =>
+      this.onKeyDown(event.key);
+
+    private onKeyDown(key: string): void {
       const found = this.keybindings.find((v) => v.keys.includes(key));
       if (!found) return;
       this.addDirection(found.dir);
@@ -586,7 +603,7 @@ module SnakeGame {
 
     public eatApple(): void {
       this._apples += 1;
-      this._points += Math.round((1 / this.elapsedSeconds) * 60 * this.apples);
+      this._points += Math.round((1 / this.elapsedSeconds) * 5 + 5);
       this.elapsedSeconds = 0;
     }
   }
@@ -721,29 +738,30 @@ module UI {
     private readonly gamestart: ElementRef;
     // public readonly gamepaused: ElementRef;
 
-    private readonly restartButton: ElementRef;
-    private readonly startButton: ElementRef;
-
     private _state: UISTATE = 'WAITING_FOR_START';
+    private _username: string = '';
 
-    public onStartClicked: () => void = () => {};
-    public onRestartClicked: () => void = () => {};
+    public uiOnStartClicked: () => void = () => {};
+    public uiOnRestartClicked: () => void = () => {};
+    public uiOnUsernameChanged: (username: string) => void = (
+      username: string
+    ) => {
+      this._username = username;
+    };
+
+    public get username() {
+      return this._username;
+    }
 
     public constructor(
       overlay: ElementRef,
       gameover: ElementRef,
-      gamestart: ElementRef,
-
-      restartButton: ElementRef,
-      startButton: ElementRef
+      gamestart: ElementRef
     ) {
       this.overlay = overlay;
 
       this.gameover = gameover;
       this.gamestart = gamestart;
-
-      this.restartButton = restartButton;
-      this.startButton = startButton;
     }
 
     public getState(): UISTATE {
@@ -853,9 +871,7 @@ export class SnakeProjectComponent implements AfterViewInit {
     this.fieldUI = new UI.FieldUI(
       this.fieldOverlay,
       this.gameOverScreen,
-      this.gameStartScreen,
-      this.restartButton,
-      this.startButton
+      this.gameStartScreen
     );
 
     this.leaderboard.localLoad();
@@ -863,18 +879,25 @@ export class SnakeProjectComponent implements AfterViewInit {
 
     this.game.Init(this.canvasRef);
 
-    this.fieldUI.onStartClicked = () => {
+    this.fieldUI.uiOnStartClicked = () => {
+      if (this.fieldUI.username == '') {
+        return;
+      }
+
       this.fieldUI.hideGameStart();
       this.game.startGame();
     };
 
-    this.fieldUI.onRestartClicked = () => {
+    this.fieldUI.uiOnRestartClicked = () => {
       this.game.resetGame();
       this.fieldUI.showGameStart();
     };
 
     this.game.onGameOver = (score) => {
-      const entry = Leaderboard.LeaderboardEntry.fromScore('OK', score);
+      const entry = Leaderboard.LeaderboardEntry.fromScore(
+        this.fieldUI.username,
+        score
+      );
 
       this.leaderboard.addEntry(entry);
       this.leaderboard.localSave();
