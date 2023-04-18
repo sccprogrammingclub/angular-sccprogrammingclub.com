@@ -249,12 +249,12 @@ module SnakeGame {
       return this.topleft.y - this.bottomright.y;
     }
 
-    public randomPoint(): Vector2 {
+    public randomPoint(safeguard: number = 0): Vector2 {
       return Vector2.random(
-        this.topleft.x,
-        this.bottomright.y,
-        this.bottomright.x,
-        this.topleft.y
+        this.topleft.x + safeguard,
+        this.bottomright.y + safeguard,
+        this.bottomright.x - safeguard,
+        this.topleft.y - safeguard
       );
     }
 
@@ -358,14 +358,14 @@ module SnakeGame {
 
     constructor(width: number, height: number) {
       this.bounds = new Bounds(0, 0, width, height);
-      this.snake = new Snake(this.bounds.randomPoint(), 'RIGHT');
+      this.snake = new Snake(this.bounds.randomPoint(4), 'RIGHT');
       this.apples = [];
 
       this.addApple();
     }
 
     public reset(): void {
-      this.snake.reset(this.bounds.randomPoint(), 'RIGHT');
+      this.snake.reset(this.bounds.randomPoint(4), 'RIGHT');
       this.apples.length = 0;
       this.addApple();
     }
@@ -720,7 +720,9 @@ module Leaderboard {
       entry: LeaderboardEntry,
       n: number
     ): LeaderboardEntry[] {
-      const index = this.leaderboard.indexOf(entry);
+      const index = this.leaderboard.findIndex(
+        (e) => e.username == entry.username
+      );
       const left = Math.max(0, index - n);
       const right = Math.min(this.leaderboard.length - 1, index + n);
       return this.leaderboard.slice(left, right + 1);
@@ -832,9 +834,10 @@ module UI {
       username: string,
       score: SnakeGame.Score
     ): Leaderboard.LeaderboardEntry[] {
+      if (username == '') return [];
       return this.leaderboard.findNeighbours(
         Leaderboard.LeaderboardEntry.fromScore(username, score),
-        3
+        1
       );
     }
   }

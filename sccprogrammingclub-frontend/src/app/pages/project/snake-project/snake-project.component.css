@@ -1,54 +1,55 @@
 .container {
   display: flex;
-  height: 100%;
   width: 100%;
+  height: 85vh;
   background: #222;
 
-  padding: 4rem;
-  gap: 4rem;
+  justify-content: space-around;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.field-container {
+  width: fit-content;
 }
 
 .field {
+  position: relative;
   background-color: #2e2e2e;
+
   padding: 5px;
   border-radius: 5px;
-  flex-grow: 1;
+
+  height: 90%;
   aspect-ratio: 1;
-  position: relative;
 }
 
-.canvas {
+.field .canvas {
   width: 100%;
   height: 100%;
 }
 
 .info {
-  width: 20rem;
-  background-color: #222;
-  padding: 2rem;
-  color: white;
-  border-radius: 5px;
-}
+  width: fit-content;
+  display: flex;
+  gap: 4rem;
 
-.info .info-score {
+  background-color: #222;
+  color: white;
   margin-bottom: 2rem;
 }
 
-.info .info-score #score {
-  font-size: xx-large;
+.info .info-stat {
   display: flex;
-  align-items: center;
-  justify-content: right;
+  align-items: baseline;
+  gap: 1rem;
 }
 
-.info .info-apples div {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-}
-
-.info .info-apples #apples {
+.info .info-stat div {
   font-size: xx-large;
+  display: flex;
+  align-items: baseline;
+  justify-content: right;
 }
 
 .info .info-apples img {
@@ -56,16 +57,29 @@
 }
 
 .leaderboard {
-  width: 20rem;
   background-color: #222;
   color: white;
+  height: min-content;
   border-radius: 5px;
+  height: 100%;
+}
+
+.leaderboard p {
+  font-size: xx-large;
+  margin-bottom: 2rem;
+}
+
+.leaderboard .leaderboard-container {
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
 }
 
 .field-overlay {
   position: absolute;
   background-color: #2222227d;
   inset: 0;
+
   display: none;
 }
 
@@ -115,7 +129,13 @@
   width: 100%;
   padding: 0.75rem;
   margin: 1rem 0;
-  border-bottom: 2px solid #22c55e;
+  border-bottom: 2px solid white;
+
+  transition: color 0.5s linear;
+}
+
+.gamestart .username:focus {
+  border-color: #22c55e;
 }
 
 .gameover .restart-btn {
@@ -128,7 +148,6 @@
   color: white;
 }
 
-.leaderboard p,
 .gameover .gameover-title {
   font-size: xx-large;
   padding: 2rem;
@@ -146,6 +165,26 @@
   margin-bottom: 5px;
 }
 
+.leaderboard-entry .entry-place {
+  color: #868686;
+}
+
+.leaderboard-entry:nth-child(1) .entry-place {
+  color: #eeff00;
+}
+
+.leaderboard-entry:nth-child(2) .entry-place {
+  color: #d9d9d9;
+}
+
+.leaderboard-entry:nth-child(3) .entry-place {
+  color: #ff8800;
+}
+
+.gameover-leaderboard-entry-me {
+  background-color: #949494;
+}
+
 .leaderboard-entry .entry-standing,
 .gameover-leaderboard-entry .entry-standing {
   display: flex;
@@ -157,12 +196,53 @@
   display: flex;
   gap: 1rem;
 }
+
 .leaderboard-entry .entry-apples,
 .gameover-leaderboard-entry .entry-apples {
   display: flex;
 }
+
 .leaderboard-entry .entry-apples img,
 .gameover-leaderboard-entry .entry-apples img {
   width: 1rem;
   height: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .leaderboard {
+    width: 12rem;
+    font-size: smaller;
+  }
+
+  .leaderboard p {
+    font-size: larger;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column-reverse;
+    height: auto;
+    padding: 1rem 0.5rem;
+    gap: 2rem;
+  }
+
+  .leaderboard {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .leaderboard p {
+    font-size: xx-large;
+  }
+
+  .info {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+  .info-stat .info-text {
+    display: none;
+  }
 }
