@@ -1,0 +1,13 @@
+.rps-title-container {
+    background-color: white;
+    height: 120px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.rps-title-container h2 {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
