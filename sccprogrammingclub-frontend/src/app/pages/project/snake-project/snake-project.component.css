@@ -1,0 +1,248 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  background: #222;
+
+  justify-content: space-around;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.field-container {
+  width: fit-content;
+}
+
+.field {
+  position: relative;
+  background-color: #2e2e2e;
+
+  padding: 5px;
+  border-radius: 5px;
+
+  height: 90%;
+  aspect-ratio: 1;
+}
+
+.field .canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  width: fit-content;
+  display: flex;
+  gap: 4rem;
+
+  background-color: #222;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.info .info-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.info .info-stat div {
+  font-size: xx-large;
+  display: flex;
+  align-items: baseline;
+  justify-content: right;
+}
+
+.info .info-apples img {
+  width: 1.5rem;
+}
+
+.leaderboard {
+  background-color: #222;
+  color: white;
+  height: min-content;
+  border-radius: 5px;
+  height: 100%;
+}
+
+.leaderboard p {
+  font-size: xx-large;
+  margin-bottom: 2rem;
+}
+
+.leaderboard .leaderboard-container {
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+}
+
+.field-overlay {
+  position: absolute;
+  background-color: #2222227d;
+  inset: 0;
+
+  display: none;
+}
+
+.gameover {
+  width: 15rem;
+  color: white;
+  background-color: #222;
+  border-radius: 10px;
+  border: 4px solid #333;
+  margin: auto;
+
+  display: none;
+}
+
+.gamestart {
+  width: 15rem;
+  color: white;
+  margin: auto;
+
+  display: none;
+}
+
+.gamestart .start-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: large;
+
+  background-color: #22c55e;
+}
+
+.gamestart p {
+  font-size: xx-large;
+}
+
+.gamestart .username {
+  color: white;
+  background: none;
+  outline: none;
+  border: none;
+
+  font-size: large;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  border-bottom: 2px solid white;
+
+  transition: color 0.5s linear;
+}
+
+.gamestart .username:focus {
+  border-color: #22c55e;
+}
+
+.gameover .restart-btn {
+  background: none;
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.gameover .gameover-title {
+  font-size: xx-large;
+  padding: 2rem;
+}
+
+.leaderboard-entry,
+.gameover-leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0.75rem;
+  border-bottom: 2px solid #393939;
+  margin-bottom: 5px;
+}
+
+.leaderboard-entry .entry-place {
+  color: #868686;
+}
+
+.leaderboard-entry:nth-child(1) .entry-place {
+  color: #eeff00;
+}
+
+.leaderboard-entry:nth-child(2) .entry-place {
+  color: #d9d9d9;
+}
+
+.leaderboard-entry:nth-child(3) .entry-place {
+  color: #ff8800;
+}
+
+.gameover-leaderboard-entry-me {
+  background-color: #949494;
+}
+
+.leaderboard-entry .entry-standing,
+.gameover-leaderboard-entry .entry-standing {
+  display: flex;
+  gap: 1rem;
+}
+
+.leaderboard-entry .entry-stats,
+.gameover-leaderboard-entry .entry-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.leaderboard-entry .entry-apples,
+.gameover-leaderboard-entry .entry-apples {
+  display: flex;
+}
+
+.leaderboard-entry .entry-apples img,
+.gameover-leaderboard-entry .entry-apples img {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .leaderboard {
+    width: 12rem;
+    font-size: smaller;
+  }
+
+  .leaderboard p {
+    font-size: larger;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column-reverse;
+    height: auto;
+    padding: 1rem 0.5rem;
+    gap: 2rem;
+  }
+
+  .leaderboard {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .leaderboard p {
+    font-size: xx-large;
+  }
+
+  .info {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+  .info-stat .info-text {
+    display: none;
+  }
+}

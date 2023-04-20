@@ -33,6 +33,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ExampleProjectComponent } from './pages/project/example-project/example-project.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
+import { SnakeProjectComponent } from './pages/project/snake-project/snake-project.component';
 
 @NgModule({
   declarations: [
@@ -56,17 +57,11 @@ import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdert
     ProjectsComponent,
     ExampleProjectComponent,
     ProjectComponent,
-    PowdertoyCloneComponent
+    PowdertoyCloneComponent,
+    SnakeProjectComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule
-  ],
-  providers: [
-    MemberService,
-    CommentService
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, MatIconModule],
+  providers: [MemberService, CommentService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
