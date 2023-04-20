@@ -33,6 +33,7 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ExampleProjectComponent } from './pages/project/example-project/example-project.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
+import { RockPaperScissorComponent } from './pages/project/rock-paper-scissor/rock-paper-scissor.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdert
     ProjectsComponent,
     ExampleProjectComponent,
     ProjectComponent,
-    PowdertoyCloneComponent
+    PowdertoyCloneComponent,
+    RockPaperScissorComponent
   ],
   imports: [
     BrowserModule,

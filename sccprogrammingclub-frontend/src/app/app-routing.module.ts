@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MemberComponent } from './pages/member/member.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PastMembersComponent } from './pages/past-members/past-members.component';
+import { RockPaperScissorComponent } from './pages/project/rock-paper-scissor/rock-paper-scissor.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'project', component: ProjectComponent, children: [
     { path: 'example-project', component: ExampleProjectComponent },
     { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
+    { path: 'rock-paper-scissor', component: RockPaperScissorComponent }
   ]},
   { path: 'member/:username', component: MemberComponent},
   { path: 'not-found', component: NotFoundComponent },
