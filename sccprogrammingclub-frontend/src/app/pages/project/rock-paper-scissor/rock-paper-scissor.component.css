@@ -11,3 +11,13 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+#rock {
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
+
+.fa-hand-back-fist {
+    color: white;
+}
