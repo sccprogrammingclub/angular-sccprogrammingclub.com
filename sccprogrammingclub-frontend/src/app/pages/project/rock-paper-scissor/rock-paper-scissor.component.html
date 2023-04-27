@@ -3,14 +3,18 @@
 </div>
 
 <div class="score">
-    <span id="user"></span>
-    <span id="computer"></span>
+    <span class="displayer user">user</span>
+    <span class="displayer computer">computer</span>
 </div>
 
-<div class="rps-container">
-    <div id="rock">
-        <i class="fa-light fa-hand-back-fist"></i>
+<div class="rps-container" >
+    <div class="item rock" (click)="selectItem('rock')">
+        <mat-icon>account_circle</mat-icon>
     </div>
-    <div id="paper"></div>
-    <div id="scissors"></div>
+    <div class="item paper" (click)="selectItem('paper')">
+        <mat-icon>pan_tool</mat-icon>
+    </div>
+    <div class="item scissors" (click)="selectItem('scissors')">
+        <mat-icon>content_cut</mat-icon>
+    </div>
 </div>

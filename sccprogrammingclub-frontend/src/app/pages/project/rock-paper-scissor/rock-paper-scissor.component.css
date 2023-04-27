@@ -1,6 +1,6 @@
 .rps-title-container {
     background-color: white;
-    height: 120px;
+    height: 90px;
     width: 100%;
     border-radius: 5px;
 }
@@ -12,12 +12,45 @@
     transform: translateY(-50%);
 }
 
-#rock {
-    height: 100px;
-    width: 100px;
-    background-color: black;
+.score {
+    width: 250px;
+    height: 85px;
+    margin: 5px auto 2px;
+    border: 2px solid black;
+    border-radius: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.fa-hand-back-fist {
+.displayer {
+    width: 35px;
+    height: 1.2rem;
+    background-color: green;
+}
+
+.rps-container {
+    background-color: #24272E;
+    width: 90%;
+    height: 90px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item {
+    display: inline-block;
+    border: 1px solid white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #352c87;
+}
+
+.item mat-icon {
     color: white;
 }
