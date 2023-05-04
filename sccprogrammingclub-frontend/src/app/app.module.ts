@@ -35,6 +35,9 @@ import { ProjectComponent } from './pages/project/project.component';
 import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
 import { SnakeProjectComponent } from './pages/project/snake-project/snake-project.component';
 import { ChatgptTicTacToeComponent } from './pages/project/chatgpt-tic-tac-toe/chatgpt-tic-tac-toe.component';
+import { Connect4Component } from './pages/project/connect4/connect4.component';
+import { GameBoardComponent } from './pages/project/connect4/game-board/game-board.component';
+import { SceneButtonsComponent } from './pages/project/connect4/scene-buttons/scene-buttons.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { ChatgptTicTacToeComponent } from './pages/project/chatgpt-tic-tac-toe/c
     PowdertoyCloneComponent,
     SnakeProjectComponent,
     ChatgptTicTacToeComponent,
+    Connect4Component,
+    GameBoardComponent,
+    SceneButtonsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MatIconModule],
   providers: [MemberService, CommentService],

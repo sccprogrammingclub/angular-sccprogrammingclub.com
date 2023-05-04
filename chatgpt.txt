@@ -5,12 +5,12 @@ ng generate component game-board
 ng generate component scene-buttons
 ng generate service game-logic
 
-#game-board.component.html
+#game-board.component.html xxx
 <h1>Connect 4</h1>
 <h2 id="winner"><span class="start-text"></span></h2>
 <div id="board"></div>
 
-#scene-buttons.component.html
+#scene-buttons.component.html XXX
 <div class="location-box">
     <h3>Locations</h3>
     <button (click)="switchScene('jungle')">Jungle</button>
@@ -20,7 +20,7 @@ ng generate service game-logic
 </div>
 <button (click)="reset()">Reset</button>
 
-#game-logic.service.ts
+#game-logic.service.ts  XXX
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class GameLogicService {
   // You may need to make some modifications to fit Angular style and structure.
 }
 
-#scene-buttons.component.ts
+#scene-buttons.component.ts  XXX
 import { Component } from '@angular/core';
 
 @Component({
@@ -51,7 +51,7 @@ export class SceneButtonsComponent {
   }
 }
 
-#game-board.component.ts
+#game-board.component.ts XXXX
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { GameLogicService } from '../game-logic.service';
 
@@ -68,7 +68,7 @@ export class GameBoardComponent implements OnInit {
   }
 }
 
-#app.component.html
+#app.component.html XXXXXX
 <app-game-board></app-game-board>
 <app-scene-buttons></app-scene-buttons>
 
