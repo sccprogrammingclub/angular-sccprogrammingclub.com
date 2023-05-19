@@ -3,7 +3,8 @@
 
 // I hate angular
 
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { UrlHandlingStrategy } from '@angular/router';
 
 module Utils {
   export function randomInt(min: number, max: number) {
@@ -848,7 +849,8 @@ module UI {
   templateUrl: './snake-project.component.html',
   styleUrls: ['./snake-project.component.css'],
 })
-export class SnakeProjectComponent implements AfterViewInit {
+export class SnakeProjectComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('root') root!: ElementRef;
   @ViewChild('canvas') canvasRef!: ElementRef;
 
   @ViewChild('field_overlay') fieldOverlay!: ElementRef;
@@ -864,6 +866,10 @@ export class SnakeProjectComponent implements AfterViewInit {
   fieldUI!: UI.FieldUI;
   leaderboardUI!: UI.LeaderboardUI;
 
+  parentElement!: HTMLElement;
+  parentBackupWidth!: string;
+  parentBackupMargin!: string;
+
   constructor() {
     this.game = new SnakeGame.Game();
     this.leaderboard = new Leaderboard.Leaderboard();
@@ -871,6 +877,13 @@ export class SnakeProjectComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.parentElement = this.root.nativeElement.parentElement.parentElement.parentElement;
+    this.parentBackupWidth  = this.parentElement.style.width;
+    this.parentBackupMargin = this.parentElement.style.margin;
+
+    this.parentElement.style.width  = "100%";
+    this.parentElement.style.margin = "0px";
+
     this.fieldUI = new UI.FieldUI(
       this.fieldOverlay,
       this.gameOverScreen,
@@ -910,5 +923,11 @@ export class SnakeProjectComponent implements AfterViewInit {
     };
 
     this.fieldUI.showGameStart();
+  }
+
+  ngOnDestroy(): void {
+    console.log("Snake destroyed");
+    this.parentElement.style.width  = this.parentBackupWidth;
+    this.parentElement.style.margin = this.parentBackupMargin;
   }
 }
