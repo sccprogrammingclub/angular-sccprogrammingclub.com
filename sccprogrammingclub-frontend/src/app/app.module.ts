@@ -35,6 +35,7 @@ import { ProjectComponent } from './pages/project/project.component';
 import { PowdertoyCloneComponent } from './pages/project/powdertoy-clone/powdertoy-clone.component';
 import { SnakeProjectComponent } from './pages/project/snake-project/snake-project.component';
 import { ChatgptTicTacToeComponent } from './pages/project/chatgpt-tic-tac-toe/chatgpt-tic-tac-toe.component';
+import { PacmanProjectComponent } from './pages/project/pacman-project/pacman-project.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ChatgptTicTacToeComponent } from './pages/project/chatgpt-tic-tac-toe/c
     PowdertoyCloneComponent,
     SnakeProjectComponent,
     ChatgptTicTacToeComponent,
+    PacmanProjectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MatIconModule],
   providers: [MemberService, CommentService],
