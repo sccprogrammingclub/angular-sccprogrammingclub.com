@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="leaderboard">
+        <p>Leaderboard</p>
+        <div class="leaderboard-container">
+            <div class="leaderboard-entry" *ngFor="let entry of leaderboard.get(100); let i = index"
+                [attr.data-index]="i">
+                <div class="entry-standing">
+                    <span class="entry-place">{{i + 1}}</span>
+                    <span class="entry-username">{{entry.username}}</span>
+                </div>
+                <div class="entry-stats">
+                    <div class="entry-ghosts">
+                        <!-- <img -->
+                        <!-- src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" /> -->
+                        <div>{{entry.ghosts}}</div>
+                    </div>
+                    <span>{{entry.points}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field-container">
+        <div class="info">
+            <div class="info-stat info-score">
+                <span class="info-text">Score</span>
+                <div>
+                    <span>{{game.score.points}}</span>
+                    <span style="font-size: medium;">pts</span>
+                </div>
+            </div>
+            <div class="info-stat info-ghosts">
+                <span class="info-text">Ghosts</span>
+                <div>
+                    <span #ghosts id="ghosts">{{game.score.ghosts}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="field-overlay" #field_overlay>
+                <div class="gameover" #gameover>
+                    <p class="gameover-title">Game Over!</p>
+                    <div class="gameover-leaderboard"
+                        *ngFor="let entry of leaderboardUI.uiGetGameOverEntries(fieldUI?.username || '', game.score); let i=index"
+                        [attr.data-index]="i">
+                        <div class="gameover-leaderboard-entry">
+                            <div class="entry-standing">
+                                <span>{{i + leaderboard.getPlace(fieldUI.username) - 1}}</span>
+                                <span class="entry-username">{{entry.username}}</span>
+                            </div>
+                            <div class="entry-stats">
+                                <div class="entry-apples">
+                                    <img
+                                        src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png" />
+                                    <div>{{entry.ghosts}}</div>
+                                </div>
+                                <span>{{entry.points}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="restart-btn" #gameover_restart (click)="fieldUI.uiOnRestartClicked()">
+                        I wanna go again!
+                    </button>
+                </div>
+                <div class="gamestart" #gamestart>
+                    <p>Pacman</p>
+                    <input type="text" #username required placeholder="Username" class="username"
+                        (change)="fieldUI.uiOnUsernameChanged(username.value)" (keydown.enter)="username.blur()">
+                    <button class="start-btn" #gamestart_start (click)="fieldUI.uiOnStartClicked()">
+                        Lets play!
+                    </button>
+                </div>
+            </div>
+            <canvas class="canvas" #canvas width="1000" height="1000"></canvas>
+        </div>
+    </div>
+</div>
