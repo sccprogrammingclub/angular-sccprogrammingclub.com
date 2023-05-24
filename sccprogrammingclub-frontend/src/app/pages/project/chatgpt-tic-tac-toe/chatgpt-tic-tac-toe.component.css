@@ -1,0 +1,25 @@
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .game-board button {
+    font-size: 48px;
+    padding: 10px;
+  }
+  
+  .game-board button:disabled {
+    background-color: #ccc;
+  }
+  
+  .game-board button:hover:not(:disabled) {
+    background-color: #eee;
+  }
+  
+  .game-board button:active:not(:disabled) {
+    background-color: #ddd;
+  }
+  

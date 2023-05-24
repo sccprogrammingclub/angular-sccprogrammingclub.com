@@ -1,0 +1,11 @@
+<div class="game-board">
+  <button *ngFor="let cell of board; let i = index" (click)="play(i)" [disabled]="cell !== ' '">{{cell}}</button>
+</div>
+
+<div *ngIf="winner">
+  {{winner}} wins!
+</div>
+
+<div *ngIf="!winner">
+  {{player}}'s turn
+</div>

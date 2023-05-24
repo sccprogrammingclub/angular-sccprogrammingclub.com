@@ -113,10 +113,12 @@ class Bounds {
 class Particle {
   pos: Vector2;
   vel: Vector2;
+  color: string;
 
-  constructor(nPos: Vector2) {
+  constructor(nPos: Vector2, nColor: string) {
     this.pos = nPos;
     this.vel = new Vector2(0, 0);
+    this.color = nColor;
   }
 
   update(dt: number, bounds: Bounds): void {
@@ -175,10 +177,10 @@ class ParticleMap {
   }
 
   update(): void {
-    for (let [chunkKey, particles] of this.chunks) for (let particle of particles) {
-      particle.update(FRAMETIME, this.bounds);
+    for (let [chunkKey, particles] of this.chunks) for (let pi = 0; pi < particles.length; pi++) {
+      particles[pi].update(FRAMETIME, this.bounds);
 
-      this.doInteractions(this.keyToChunk(chunkKey), particle, (p1, p2) => {
+      this.doInteractions(this.keyToChunk(chunkKey), particles[pi], (p1, p2) => {
         let distanceSqr = p1.pos.distanceSqr(p2.pos);
         if (distanceSqr > PARTICLE_SIZE * PARTICLE_SIZE) return;
 
@@ -205,14 +207,17 @@ class ParticleMap {
         this.addParticle(particles[i]);
         if (particles.length > i + 1) particles[i] = particles.pop()!;
         else particles.pop();
-        // i--;
+
+        // this would be more correct, but it seems to freeze occasionally and I'd rather 
+        // something wrong that works than something right that doesn't
+        // i--; 
       }
     }
   }
 
   forAllParticles(whatToDo: (_: Particle) => void): void {
-    for (let [_, ps] of this.chunks) for (let p of ps) {
-      whatToDo(p);
+    for (let [_, ps] of this.chunks) for (let pi = 0; pi < ps.length; pi++) {
+      whatToDo(ps[pi]);
     }
   }
 
@@ -265,10 +270,20 @@ export class PowdertoyCloneComponent implements AfterViewInit {
   @ViewChild('powdertoycanvas') canvas!: ElementRef;
   canvasCtx!: CanvasRenderingContext2D;
 
+  @ViewChild('colorbutton000') cb000!: ElementRef;
+  @ViewChild('colorbutton00f') cb00f!: ElementRef;
+  @ViewChild('colorbutton0f0') cb0f0!: ElementRef;
+  @ViewChild('colorbutton0ff') cb0ff!: ElementRef;
+  @ViewChild('colorbuttonf00') cbf00!: ElementRef;
+  @ViewChild('colorbuttonf0f') cbf0f!: ElementRef;
+  @ViewChild('colorbuttonff0') cbff0!: ElementRef;
+
   particleMap!: ParticleMap;
 
   mousePos: Vector2 | undefined;
   isMouseDown: boolean = false;
+
+  currentColor: string = "#000";
 
   constructor() { 
   }
@@ -279,7 +294,15 @@ export class PowdertoyCloneComponent implements AfterViewInit {
     this.canvasCtx.canvas!.addEventListener("mousedown", (ev) => this.isMouseDown = true );
     this.canvasCtx.canvas!.addEventListener("mouseup"  , (ev) => this.isMouseDown = false);
     this.canvasCtx.canvas!.addEventListener("mousemove", (ev) => 
-      { if (!isNaN(ev.x) && !isNaN(ev.y)) this.mousePos = new Vector2(ev.x, ev.y) });
+      { if (!isNaN(ev.offsetX) && !isNaN(ev.offsetY)) this.mousePos = new Vector2(ev.offsetX, ev.offsetY) });
+
+    this.cb000.nativeElement.addEventListener("click", () => this.currentColor = "#000");
+    this.cb00f.nativeElement.addEventListener("click", () => this.currentColor = "#00f");
+    this.cb0f0.nativeElement.addEventListener("click", () => this.currentColor = "#0f0");
+    this.cb0ff.nativeElement.addEventListener("click", () => this.currentColor = "#0ff");
+    this.cbf00.nativeElement.addEventListener("click", () => this.currentColor = "#f00");
+    this.cbf0f.nativeElement.addEventListener("click", () => this.currentColor = "#f0f");
+    this.cbff0.nativeElement.addEventListener("click", () => this.currentColor = "#ff0");
 
     this.particleMap = new ParticleMap(
       4,
@@ -299,7 +322,7 @@ export class PowdertoyCloneComponent implements AfterViewInit {
 
   doInput(): void {
     if (this.isMouseDown && this.mousePos !== undefined) {
-      this.particleMap.addParticle(new Particle(this.mousePos!.clone()));
+      this.particleMap.addParticle(new Particle(this.mousePos!.clone(), this.currentColor));
     }
   }
 
@@ -311,6 +334,7 @@ export class PowdertoyCloneComponent implements AfterViewInit {
     this.canvasCtx.clearRect(0, 0, this.canvasCtx.canvas!.width, this.canvasCtx.canvas!.height);
 
     this.particleMap.forAllParticles((particle) => {
+      this.canvasCtx.fillStyle = particle.color;
       this.canvasCtx.fillRect(particle.pos.x, particle.pos.y, PARTICLE_SIZE, PARTICLE_SIZE);
     });
   }

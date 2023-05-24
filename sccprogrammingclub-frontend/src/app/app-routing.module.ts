@@ -11,6 +11,7 @@ import { MemberComponent } from './pages/member/member.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PastMembersComponent } from './pages/past-members/past-members.component';
 import { SnakeProjectComponent } from './pages/project/snake-project/snake-project.component';
+import { ChatgptTicTacToeComponent } from './pages/project/chatgpt-tic-tac-toe/chatgpt-tic-tac-toe.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'example-project', component: ExampleProjectComponent },
       { path: 'powdertoy-clone', component: PowdertoyCloneComponent },
       { path: 'snake-project', component: SnakeProjectComponent },
+      { path: 'chatgpt-tic-tac-toe', component: ChatgptTicTacToeComponent }
     ],
   },
   { path: 'member/:username', component: MemberComponent },
