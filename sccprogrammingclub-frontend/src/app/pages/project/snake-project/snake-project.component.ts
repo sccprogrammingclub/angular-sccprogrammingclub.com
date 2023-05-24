@@ -3,8 +3,13 @@
 
 // I hate angular
 
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { UrlHandlingStrategy } from '@angular/router';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 
 module Utils {
   export function randomInt(min: number, max: number) {
@@ -12,13 +17,14 @@ module Utils {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
+
+  export function minMax(n: number, min: number, max: number) {
+    return Math.min(Math.max(n, min), max);
+  }
 }
 
 module SnakeGame {
   const SNAKE_SPEED = 5;
-
-  const FIELD_WIDTH = 20;
-  const FIELD_HEIGHT = 20;
 
   type DIRECTION = 'LEFT' | 'RIGHT' | 'UP' | 'DOWN';
   export type GAMESTATE = 'WAITING_FOR_START' | 'PAUSED' | 'PLAYING' | 'OVER';
@@ -27,7 +33,7 @@ module SnakeGame {
     private _state: GAMESTATE = 'WAITING_FOR_START';
 
     private canvas!: Canvas;
-    private readonly field: Field;
+    private field!: Field;
     private inputHandler!: InputHandler;
 
     private gameIntervalId: number | undefined;
@@ -41,16 +47,16 @@ module SnakeGame {
     public onGameOver: (score: Score) => void = (_score) => {};
 
     constructor() {
-      this.field = new Field(FIELD_WIDTH, FIELD_HEIGHT);
-
       this.score = new Score();
     }
 
-    public Init(canvasRef: ElementRef): void {
+    public Init(canvasRef: ElementRef, width: number, height: number): void {
+      this.field = new Field(width, height);
+
       this.canvas = new Canvas(
         canvasRef.nativeElement.getContext('2d'),
-        FIELD_WIDTH,
-        FIELD_HEIGHT
+        width,
+        height
       );
 
       this.inputHandler = new InputHandler();
@@ -844,6 +850,27 @@ module UI {
   }
 }
 
+const FixContainerStyle = (container: HTMLElement) => {
+  `Sets container width to 100% to allow for full-screen exp`;
+  const parentWidth = container.style.width;
+  const parentMargin = container.style.margin;
+
+  container.style.width = '100%';
+  container.style.margin = '0px';
+
+  return { parentWidth, parentMargin };
+};
+
+const ResetContainerStyle = (
+  container: HTMLElement,
+  width: string,
+  margin: string
+) => {
+  `Sets container style back`;
+  container.style.width = width;
+  container.style.margin = margin;
+};
+
 @Component({
   selector: 'app-snake-project',
   templateUrl: './snake-project.component.html',
@@ -867,22 +894,21 @@ export class SnakeProjectComponent implements AfterViewInit, OnDestroy {
   leaderboardUI!: UI.LeaderboardUI;
 
   parentElement!: HTMLElement;
-  parentBackupWidth!: string;
-  parentBackupMargin!: string;
+  parentWidth!: string;
+  parentMargin!: string;
 
   constructor() {
-    this.game = new SnakeGame.Game();
     this.leaderboard = new Leaderboard.Leaderboard();
     this.leaderboardUI = new UI.LeaderboardUI(this.leaderboard);
+
+    this.game = new SnakeGame.Game();
   }
 
   ngAfterViewInit(): void {
-    this.parentElement = this.root.nativeElement.parentElement.parentElement.parentElement;
-    this.parentBackupWidth  = this.parentElement.style.width;
-    this.parentBackupMargin = this.parentElement.style.margin;
-
-    this.parentElement.style.width  = "100%";
-    this.parentElement.style.margin = "0px";
+    this.parentElement =
+      this.root.nativeElement.parentElement.parentElement.parentElement;
+    ({ parentWidth: this.parentWidth, parentMargin: this.parentMargin } =
+      FixContainerStyle(this.parentElement));
 
     this.fieldUI = new UI.FieldUI(
       this.fieldOverlay,
@@ -893,12 +919,11 @@ export class SnakeProjectComponent implements AfterViewInit, OnDestroy {
     this.leaderboard.localLoad();
     this.leaderboardUI.updateLeaderboard(this.leaderboard);
 
-    this.game.Init(this.canvasRef);
+    const cells = Utils.minMax(Math.round(window.innerWidth / 50), 8, 20);
+    this.game.Init(this.canvasRef, cells, cells);
 
     this.fieldUI.uiOnStartClicked = () => {
-      if (this.fieldUI.username == '') {
-        return;
-      }
+      if (this.fieldUI.username == '') return;
 
       this.fieldUI.hideGameStart();
       this.game.startGame();
@@ -926,8 +951,10 @@ export class SnakeProjectComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log("Snake destroyed");
-    this.parentElement.style.width  = this.parentBackupWidth;
-    this.parentElement.style.margin = this.parentBackupMargin;
+    ResetContainerStyle(
+      this.parentElement,
+      this.parentWidth,
+      this.parentMargin
+    );
   }
 }

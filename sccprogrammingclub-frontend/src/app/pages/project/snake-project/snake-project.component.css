@@ -208,9 +208,9 @@
   height: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1920px) {
   .leaderboard {
-    width: 12rem;
+    width: 20rem;
     font-size: smaller;
   }
 
@@ -219,7 +219,18 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
+  .leaderboard {
+    width: 15rem;
+    font-size: smaller;
+  }
+
+  .leaderboard p {
+    font-size: larger;
+  }
+}
+
+@media (max-width: 800px) {
   .container {
     flex-direction: column-reverse;
     height: auto;
